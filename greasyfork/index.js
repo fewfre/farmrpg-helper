@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FarmRPG Helper
 // @namespace    https://greasyfork.org/users/1114461
-// @version      1.0.0
+// @version      1.0.1
 // @description  QOL and helper scripts for FarmRPG
 // @author       Fewfre
 // @license      GNU GPLv3
