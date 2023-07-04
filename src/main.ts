@@ -6,10 +6,11 @@ import { Navigation } from './pages/navigation';
 import { PostOfficePasswords } from './pages/postoffice';
 import { Vault } from './pages/vault';
 
+// greasemonkey / other monkey supports for loading the script's CSS
 // @ts-ignore ts(2304)
-if (typeof GM_getResourceURL !== 'undefined') {
+if (typeof GM_getResourceText !== 'undefined') {
 	// @ts-ignore ts(2304)
-	GM_addStyle(GM_getResourceURL("scriptStyle"));
+	GM_addStyle(GM_getResourceText("scriptStyle"));
 }
 
 Navigation.setup();
