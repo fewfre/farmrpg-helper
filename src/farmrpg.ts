@@ -16,11 +16,8 @@ export namespace FarmRPG {
 		}
 	}
 
-	const app: FarmRpgApp = (window as any).myApp;
-
-	// export function setup() {
-	// 	app = (window as any).myApp;
-	// }
+	// @ts-ignore ts(2304)
+	const app: FarmRpgApp = ((typeof unsafeWindow !== "undefined" ? unsafeWindow : window) as any).myApp;
 
 	export function onPageInit(page: string, callback: (props: PageData) => void) {
 		app.onPageInit(page, callback);
