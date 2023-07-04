@@ -1,0 +1,29 @@
+.item-content.svelte-i5qs34 {
+	cursor: pointer
+}
+
+.seed-list.svelte-x7uv6v.svelte-x7uv6v {
+	display: flex;
+	gap: 4px;
+	flex-wrap: wrap;
+	justify-content: center
+}
+
+.seed-list.svelte-x7uv6v button.svelte-x7uv6v {
+	display: flex;
+	align-items: center
+}
+
+.quick-swap-area.svelte-ziplh9 {
+	display: flex;
+	gap: 10px;
+	margin-right: 30px
+}
+
+.quick-swap-bttn.svelte-ziplh9 {
+	cursor: pointer
+}
+
+button.svelte-1bj479l {
+	white-space: nowrap
+}
