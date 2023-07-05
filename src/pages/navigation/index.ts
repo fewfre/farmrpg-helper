@@ -8,23 +8,17 @@ export namespace Navigation {
 		{
 			links: [
 				{ link: 'xfarm', text: 'Farm', params: { id: getFarmID() } },
-				{ link: 'explore', text: 'Explore' },
-				{ link: 'fish', text: 'Fishing' },
 				{ link: 'town', text: 'Town' },
-				{ link: 'quests', text: 'Help' },
-				{ link: 'workshop', text: 'Workshop' },
+				{ link: 'fish', text: 'Fish' },
+				{ link: 'explore', text: 'Explore' },
 			]
 		},
 		{
 			section: 'Town',
 			links: [
-				{ link: 'store', text: 'Store' },
 				{ link: 'market', text: 'Sell' },
-				{ link: 'bank', text: 'Bank' },
-				{ link: 'postoffice', text: 'Mail' },
 				{ link: 'pets', text: 'Pets' },
-				{ link: 'supply', text: 'Upgrade' },
-				{ link: 'locksmith', text: 'Locksmith' },
+				{ link: 'bank', text: 'Bank' },
 				{ link: 'steakmarket', text: 'Steak' },
 			]
 		},
@@ -37,18 +31,18 @@ export namespace Navigation {
 				{ link: 'comm', text: 'Community Center' },
 			]
 		},
-		{
-			section: 'Skills',
-			links: [
-				{ link: 'progress', params: { type: 'Farming' }, icon: '/img/items/6137.png' },
-				{ link: 'progress', params: { type: 'Fishing' }, icon: '/img/items/7783.png' },
-				{ link: 'progress', params: { type: 'Crafting' }, icon: '/img/items/5868.png' },
-				{ link: 'progress', params: { type: 'Exploring' }, icon: '/img/items/6075.png' },
-				{ link: 'perks', text: 'Perks' },
-				{ link: 'mastery', text: 'Mastery' },
-				{ link: 'npclevels', text: 'Friendship' },
-			]
-		},
+		// {
+		// 	section: 'Skills',
+		// 	links: [
+		// 		{ link: 'progress', params: { type: 'Farming' }, icon: '/img/items/6137.png' },
+		// 		{ link: 'progress', params: { type: 'Fishing' }, icon: '/img/items/7783.png' },
+		// 		{ link: 'progress', params: { type: 'Crafting' }, icon: '/img/items/5868.png' },
+		// 		{ link: 'progress', params: { type: 'Exploring' }, icon: '/img/items/6075.png' },
+		// 		{ link: 'perks', text: 'Perks' },
+		// 		{ link: 'mastery', text: 'Mastery' },
+		// 		{ link: 'npclevels', text: 'Friendship' },
+		// 	]
+		// },
 	];
 
 	//////////////////////////////////
@@ -56,7 +50,7 @@ export namespace Navigation {
 	//////////////////////////////////
 	function init({ container }: { container: Element }) {
 		// const $target = $('.view.view-left.navbar-through .page-content li:first-of-type').after(`<li />`);
-		const $target = $(container).find('.list-block li:first-of-type').after(`<li />`);
+		const $target = $(`<li />`).insertAfter($(container).find('.list-block li:first-of-type'));
 
 		if (!$target.length) { return; }
 		return new Shortcuts({ target: $target[0], props: { sections } });
