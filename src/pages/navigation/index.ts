@@ -28,6 +28,7 @@ export namespace Navigation {
 				{ link: 'daily', text: 'Chores' },
 				{ link: 'well', text: 'Well' },
 				{ link: 'crack', text: 'Vault' },
+				{ link: 'spin', text: 'Wheel' },
 				{ link: 'comm', text: 'Community Center' },
 			]
 		},

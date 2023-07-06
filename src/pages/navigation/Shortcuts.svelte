@@ -21,6 +21,7 @@
 								{#if i != 0}&nbsp;• {/if}
 								<a
 									href="{link}.php{params ? '?' + new URLSearchParams(params).toString() : ''}"
+									class="close-panel"
 									data-view=".view-main"
 								>
 									{#if icon}
