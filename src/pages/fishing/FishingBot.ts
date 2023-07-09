@@ -43,7 +43,12 @@ export class FishingBot extends EventTarget {
 	}
 
 	private async fishOne() {
-		await this.clickFish();
+		const clickResult = await this.clickFish();
+		// Meal worms have no catch modal
+		if (clickResult === 'mealworm') {
+			if (this.stopRequested) { return; }
+			return await sleep(0.07, 0.185);
+		}
 		// We wait for catch modal - but if it doesn't open then we missed the fish and try again
 		try {
 			await waitForElm(".picker-catch.modal-in", { visible: true, timeout: 0.1 });
@@ -58,31 +63,22 @@ export class FishingBot extends EventTarget {
 		await sleep(0.05, 0.115); // tiny delay before clicking next fish
 	}
 
-	private async catchFish() {
-		if (!$(".fishcaught").length) {
-			throw new Error("Cannot find fishing to catch")
-		}
-		$(".fishcaught").trigger("click");
-	}
-
 	private async clickFish() {
 		if (!$("#fishinwater").length) {
 			throw new Error("No fishing area detected")
 		}
-		const fish = await waitForElm(".fish.catch");
+		const fish = await waitForElm(".fish.catch, .fish.fishcaught:not([src*='/splash'])", { visible: true });
 		fish.click();
-		/*     var triesLeft = 500;
-			while (triesLeft-- > 0) {
-			  if($(".fish.catch").length) {
-				$(".fish.catch").click();
-					return;
-			  }
-			  await sleep(0.05);
-			} */
-		/*     if(triesLeft <= 0) {
-			  throw new Error("Script gave up, couldn't find fish")
-			} */
+		return fish.classList.contains('fishcaught') ? 'mealworm' : true;
 	}
+
+	private async catchFish() {
+		if (!$(".picker-catch .fishcaught").length) {
+			throw new Error("Cannot find fishing to catch")
+		}
+		$(".picker-catch .fishcaught").trigger("click");
+	}
+
 	private getBaitCount() {
 		return parseInt($("#baitarea strong").first().text() || "0");
 	}

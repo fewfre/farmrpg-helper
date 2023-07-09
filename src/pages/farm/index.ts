@@ -39,6 +39,10 @@ export namespace PlayerFarm {
 		return $("#crops").find(".plantseed").length;
 	}
 
+	export function getNumberOfHarvestablePlots() {
+		return $("#crops").find(".harvest").length;
+	}
+
 	//////////////////////////////////
 	// Initialize
 	//////////////////////////////////
