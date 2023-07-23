@@ -4,6 +4,8 @@ import BaitArea from './BaitArea.svelte';
 import { FishingBot } from './FishingBot';
 
 export namespace Fishing {
+	export const LSKEY_AUTO_WORMS = "fewfh-fishing-autoworms";
+
 	export const bot = new FishingBot();
 
 	export interface BaitData { name: string; num: string; imgSrc: string; selected: boolean; }
@@ -29,6 +31,10 @@ export namespace Fishing {
 		return baits;
 	}
 
+	export function getLastBait() {
+		return $("#last_bait").html();
+	}
+
 	//////////////////////////////////
 	// Initialize
 	//////////////////////////////////
@@ -52,6 +58,7 @@ export namespace Fishing {
 	}
 
 	export function setup() {
+		bot.toggleAutoBuyWorms(localStorage.getItem(LSKEY_AUTO_WORMS) === 'true');
 		FarmRPG.onPageInit("fishing", init);
 		FarmRPG.onPageExit("fishing", () => {
 			bot.stop();

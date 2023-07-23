@@ -1,11 +1,12 @@
 import { Asset } from "../../assets";
-import { sleep, waitForElm } from "../../utils";
+import { buyItem, randomNumber, sleep, waitForElm } from "../../utils";
 
 export class FishingBot extends EventTarget {
 	static FINISHED = "FINISHED";
 
 	private active: boolean = false;
 	private stopRequested: boolean = false;
+	private autoBuyWorms: boolean = false;
 
 	constructor() {
 		super();
@@ -13,6 +14,7 @@ export class FishingBot extends EventTarget {
 
 	get isActive(): boolean { return this.active; }
 	get isStopRequested(): boolean { return this.stopRequested; }
+	get isAutoBuyWorms(): boolean { return this.autoBuyWorms; }
 
 	async start() {
 		if (this.active) return;
@@ -26,6 +28,12 @@ export class FishingBot extends EventTarget {
 				await this.fishOne();
 				if (this.stopRequested) break;
 				await sleep(0.3, 0.4);
+
+				// Random number here probably doesn't help, but meh
+				if (this.autoBuyWorms && this.getBaitCount() < randomNumber(50, 100)) {
+					// No reason to `await`, just keep fishing.
+					buyItem(18, randomNumber(80, 100));
+				}
 			}
 			this.active = false;
 			this.stopRequested = false;
@@ -81,5 +89,9 @@ export class FishingBot extends EventTarget {
 
 	private getBaitCount() {
 		return parseInt($("#baitarea strong").first().text() || "0");
+	}
+
+	public toggleAutoBuyWorms(val?: boolean) {
+		this.autoBuyWorms = val ?? !this.autoBuyWorms;
 	}
 }

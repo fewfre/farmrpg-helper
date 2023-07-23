@@ -5,6 +5,7 @@
 
 	$: buyingWorms = false;
 	$: wormErrorText = null;
+	$: autoBuyWorms = Fishing.bot.isAutoBuyWorms;
 
 	async function onBuyWorms() {
 		try {
@@ -22,13 +23,23 @@
 		}
 	}
 
+	function onChangeAutoBuyWorms() {
+		autoBuyWorms = !autoBuyWorms;
+		Fishing.bot.toggleAutoBuyWorms(autoBuyWorms);
+		autoBuyWorms
+			? localStorage.setItem(Fishing.LSKEY_AUTO_WORMS, "true")
+			: localStorage.removeItem(Fishing.LSKEY_AUTO_WORMS);
+	}
+
 	$: loadingBaitList = true;
 	let baits: Fishing.BaitData[];
 	$: baits = [];
+	$: currentBait = Fishing.getLastBait();
 	waitForElm("#last_bait").then(async () => {
+		currentBait = Fishing.getLastBait();
 		try {
 			loadingBaitList = false;
-			baits = await Fishing.getCachedBaitData(jQuery("#last_bait").html());
+			baits = await Fishing.getCachedBaitData(Fishing.getLastBait());
 			baits = baits.filter((b) => !b.selected);
 		} catch (err) {
 			console.error(err);
@@ -68,9 +79,16 @@
 					{/each}
 				{/if}
 			</div>
-			<button on:click={onBuyWorms} disabled={buyingWorms}>
-				{#if wormErrorText}{wormErrorText}{:else}BUY 200 WORMS{/if}
-			</button>
+			{#if currentBait === "Worms"}
+				<button on:click={onBuyWorms} disabled={buyingWorms}>
+					{#if wormErrorText}{wormErrorText}{:else}BUY 200 WORMS{/if}
+				</button>
+
+				<input type="checkbox" id="infiniteWorms" checked={autoBuyWorms} on:change={onChangeAutoBuyWorms} />
+				<abbr title="Kinda EXTRA cheat-y; up to you. Will randomly buy somewhere between 50-100 left.">
+					Auto buy worms
+				</abbr>
+			{/if}
 		</div>
 	</div>
 </div>

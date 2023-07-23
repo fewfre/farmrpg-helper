@@ -5,3 +5,4 @@
 	- This also fixes an issue caused by using quick seeds when inventory full of seeds
 - Quick seeds now disable button based on farming level
 - Fixed bug with mastery claim all, and rewrote to be quicker
+- Added option to auto-buy worms (request)
