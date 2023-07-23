@@ -5,6 +5,7 @@ import { Mastery } from './pages/mastery';
 import { Navigation } from './pages/navigation';
 import { PostOfficePasswords } from './pages/postoffice';
 import { Vault } from './pages/vault';
+import './assets/theme.css';
 
 // greasemonkey / other monkey supports for loading the script's CSS
 // @ts-ignore ts(2304)

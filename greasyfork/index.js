@@ -2,7 +2,7 @@
 // @name         FarmRPG Helper
 // @namespace    https://greasyfork.org/users/1114461
 // @homepage     https://github.com/fewfre/farmrpg-helper
-// @version      1.0.5
+// @version      1.0.6
 // @description  QOL and helper scripts for FarmRPG
 // @author       Fewfre
 // @license      GNU GPLv3

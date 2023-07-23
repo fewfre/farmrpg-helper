@@ -1,0 +1,7 @@
+:root {
+	--fewfh-border-color: #c8c7cc;
+}
+
+:root .layout-dark {
+	--fewfh-border-color: #393939;
+}

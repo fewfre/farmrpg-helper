@@ -43,6 +43,20 @@ export namespace PlayerFarm {
 		return $("#crops").find(".harvest").length;
 	}
 
+	export function getOwnedSeedCountMap() {
+		return Object.fromEntries(
+			$("select.seedid option").map<[number, number]>(function () {
+				return [[parseInt($(this).val().toString()), parseInt($(this).data('amt'))]];
+			}).get()
+				// filter out 
+				.filter(([k]) => k !== 0/*none*/ && k !== 238/*shovel*/)
+		);
+	}
+
+	export async function setCurrentSeed(id: number) {
+		return fetch(`worker.php?go=setfarmseedcounts&id=${id}&cachebuster=${Date.now()}`, { method: 'GET' }).then(r => r.text());
+	}
+
 	//////////////////////////////////
 	// Initialize
 	//////////////////////////////////

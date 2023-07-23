@@ -1,0 +1,5 @@
+## V1.0.6 - 23 July 2023
+- Small cleanup
+- Quick seeds list now collapsible (request)
+- Quick buy/plant seeds will now use existing seeds before buying more
+	- This also fixes an issue caused by using quick seeds when inventory full of seeds.
