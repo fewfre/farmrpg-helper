@@ -2,10 +2,11 @@
 	import { PlayerFarm } from ".";
 	import { Asset } from "../../assets";
 	import { FarmRPG } from "../../farmrpg";
-	import { buyItem } from "../../utils";
+	import { buyItem, getSkillLevels } from "../../utils";
 
 	const LSKEY_LAST_BOUGHT = "few-farm-lastbought";
 	const LSKEY_COLLAPSED = "few-farm-seeds-collapsed";
+	const farmingLevel = getSkillLevels().farming;
 
 	export let seeds: PlayerFarm.SeedProps[];
 
@@ -100,9 +101,17 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner seed-list">
-								{#each seeds as { id, name, img }}
-									<button on:click={() => onSeedClick(id)} disabled={buying}>
+								{#each seeds as { id, name, level, img }}
+									<button
+										on:click={() => onSeedClick(id)}
+										disabled={buying || (farmingLevel !== 0 && farmingLevel < level)}
+										title={name}
+									>
 										<img src={img} alt={name} height="32" />
+
+										{#if farmingLevel !== 0 && farmingLevel < level}
+											<div class="seed-level">Lv {level}</div>
+										{/if}
 									</button>
 								{/each}
 							</div>
@@ -154,6 +163,7 @@
 	}
 	.seed-list button {
 		all: unset;
+		position: relative;
 		border: 1px solid currentColor;
 		line-height: 0;
 		padding: 3px 8px;
@@ -172,10 +182,23 @@
 		transform: rotate(8deg);
 	}
 	.seed-list button[disabled] {
-		transform: scale(0);
+		transform: scale(1);
 		filter: grayscale(1);
 	}
 	.seed-list button[disabled] img {
 		transform: rotate(0);
+		opacity: 0.5; /* Needed for level to show up when disabled due to level requirement */
+	}
+
+	.seed-level {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 14px;
 	}
 </style>

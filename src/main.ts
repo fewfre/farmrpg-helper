@@ -6,6 +6,7 @@ import { Navigation } from './pages/navigation';
 import { PostOfficePasswords } from './pages/postoffice';
 import { Vault } from './pages/vault';
 import './assets/theme.css';
+import { getSkillLevels } from './utils';
 
 // greasemonkey / other monkey supports for loading the script's CSS
 // @ts-ignore ts(2304)
@@ -14,6 +15,7 @@ if (typeof GM_getResourceText !== 'undefined') {
 	GM_addStyle(GM_getResourceText("scriptStyle"));
 }
 
+getSkillLevels(); // init cache with default data
 Navigation.setup();
 Fishing.setup();
 Exploration.setup();
