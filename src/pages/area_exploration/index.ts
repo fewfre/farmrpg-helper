@@ -17,10 +17,8 @@ export namespace Exploration {
 
 	export function setup() {
 		FarmRPG.onPageInit("area", init);
-		FarmRPG.onPageInit("*", ({ name }) => {
-			if (name !== "area") {
-				bot.stop()
-			}
+		FarmRPG.onPageExit("area", () => {
+			bot.stop();
 		});
 	}
 }

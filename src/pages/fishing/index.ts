@@ -53,10 +53,8 @@ export namespace Fishing {
 
 	export function setup() {
 		FarmRPG.onPageInit("fishing", init);
-		FarmRPG.onPageInit("*", ({ name }) => {
-			if (name !== "fishing") {
-				bot.stop()
-			}
+		FarmRPG.onPageExit("fishing", () => {
+			bot.stop();
 		});
 	}
 }

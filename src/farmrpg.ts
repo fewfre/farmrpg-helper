@@ -26,6 +26,17 @@ export namespace FarmRPG {
 		app.onPageBeforeRemove(page, callback);
 	}
 
+	// Custom - triggers when you leave the specified page.
+	export function onPageExit(page: string, callback: (props: PageData) => void) {
+		let lastPage = null;
+		FarmRPG.onPageInit("*", (props) => {
+			if (lastPage === page && props.name !== page) {
+				callback(props);
+			}
+			lastPage = props.name;
+		});
+	}
+
 	export function refreshPage() {
 		app.mainView.router.refreshPage();
 	}
