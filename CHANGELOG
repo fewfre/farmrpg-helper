@@ -2,5 +2,6 @@
 - Small cleanup
 - Quick seeds list now collapsible (request)
 - Quick buy/plant seeds will now use existing seeds before buying more
-	- This also fixes an issue caused by using quick seeds when inventory full of seeds.
+	- This also fixes an issue caused by using quick seeds when inventory full of seeds
 - Quick seeds now disable button based on farming level
+- Fixed bug with mastery claim all, and rewrote to be quicker

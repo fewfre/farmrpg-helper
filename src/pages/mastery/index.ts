@@ -2,6 +2,15 @@ import { FarmRPG } from '../../farmrpg';
 import MasteryClaimAll from './MasteryClaimAll.svelte';
 
 export namespace Mastery {
+	export function getClaimIds() {
+		return $(".claimbtn").map<string>(function () { return $(this).data('id') }).get();
+	}
+
+	export function claimMastery(id: string | number) {
+		return fetch(`worker.php?go=claimmastery&id=${id}`, { method: 'POST' })
+			.then(r => r.text());
+	}
+
 	//////////////////////////////////
 	// Initialize
 	//////////////////////////////////

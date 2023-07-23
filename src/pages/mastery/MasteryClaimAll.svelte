@@ -1,23 +1,39 @@
 <script lang="ts">
+	import { Mastery } from ".";
+	import { FarmRPG } from "../../farmrpg";
 	import { sleep, waitForElm } from "../../utils";
 
-	$: showButton = true;
-	function onClick() {
-		showButton = false;
-		clickClaimBttnRecursive();
+	const allIds = Mastery.getClaimIds();
+
+	$: state = "button";
+	$: progress = 0;
+
+	async function onClick() {
+		state = "claiming";
+
+		await clickClaimButtonRecursive(allIds.slice());
+		state = "done";
+		await sleep(0.3);
+		FarmRPG.refreshPage();
 	}
 
-	async function clickClaimBttnRecursive() {
-		if (!jQuery(".claimbtn").length) return;
-		jQuery(".claimbtn").first().click();
-		await waitForElm(".modal-button", { timeout: 0.25 });
-		await sleep(0.5);
-		jQuery(".modal-button").first().click();
-		await sleep(0.25);
-		await clickClaimBttnRecursive();
+	async function clickClaimButtonRecursive(ids: string[]) {
+		const id = ids.pop();
+
+		await Mastery.claimMastery(id);
+		progress++;
+
+		if (ids.length > 0) {
+			await sleep(0.5);
+			await clickClaimButtonRecursive(ids);
+		}
 	}
 </script>
 
-{#if showButton}
-	<button style="margin-left:10px;" on:click={onClick}>CLAIM ALL</button>
+{#if state === "button"}
+	<button style="margin-left:10px;" on:click={onClick}>🤖 QUICK CLAIM ALL</button>
+{:else if state === "claiming"}
+	<span style="margin-left:10px;">🤖 Claiming - Progress: {progress}/{allIds.length}</span>
+{:else if state === "done"}
+	<span style="margin-left:10px;">🤖 Claiming - Done!</span>
 {/if}

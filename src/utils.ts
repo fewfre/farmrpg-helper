@@ -2,7 +2,11 @@ function randomNumber(min: number, max: number) {
 	return Math.random() * (max - min) + min;
 }
 
-// time in seconds
+/**
+ * `async` function to sleep for x seconds
+ * @param time in seconds
+ * @param max in seconds - will cause sleep to be a random number between `time` and `max` seconds
+ */
 export async function sleep(time: number, max?: number) {
 	return new Promise(resolve => {
 		setTimeout(resolve, max ? randomNumber(time * 1000, max * 1000) : time * 1000);
