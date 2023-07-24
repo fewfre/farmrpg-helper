@@ -6,3 +6,5 @@
 - Quick seeds now disable button based on farming level
 - Fixed bug with mastery claim all, and rewrote to be quicker
 - Added option to auto-buy worms (request)
+- Shortcuts can now be user edited
+- Option added to exploration bot to keep running and wait for more stamina

@@ -80,7 +80,7 @@
 					<span class="action-tray hlist">
 						{#if mode === "edit"}
 							<!-- svelte-ignore a11y-missing-attribute a11y-click-events-have-key-events -->
-							<a on:click={onReset}>reset</a>
+							<a on:click={onReset} style="color:red;">reset</a>
 							<!-- svelte-ignore a11y-missing-attribute a11y-click-events-have-key-events -->
 							<a on:click={onCancel}>cancel</a>
 							<!-- svelte-ignore a11y-missing-attribute a11y-click-events-have-key-events -->

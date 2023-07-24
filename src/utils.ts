@@ -13,6 +13,22 @@ export async function sleep(time: number, max?: number) {
 	});
 }
 
+export function sleepCancelable(time: number, max?: number) {
+	let timeoutId: number, resolveCallback: any;
+	const promise = new Promise(resolve => {
+		resolveCallback = resolve;
+		timeoutId = setTimeout(resolve, max ? randomNumber(time * 1000, max * 1000) : time * 1000);
+	});
+	return {
+		promise,
+		timeoutId,
+		cancel() {
+			clearTimeout(timeoutId);
+			resolveCallback();
+		}
+	};
+}
+
 // https://stackoverflow.com/a/61511955
 interface WaitForElmOptions { target?: Element, config?: MutationObserverInit, timeout?: number, visible?: boolean }
 export function waitForElm(selector, options: WaitForElmOptions = {}) {
