@@ -1,8 +1,46 @@
-.item-content.svelte-i5qs34 {
+.bot-card.svelte-10db8mr {
+	border: 1px dashed currentColor;
+	margin: 5px 0
+}
+
+.item-content.svelte-10db8mr {
 	cursor: pointer
 }
 
-.seed-list.svelte-sejlla.svelte-sejlla {
+.few-seedlist-container.svelte-rr924h.svelte-rr924h.svelte-rr924h {
+	border-top: 1px solid var(--fewfh-border-color);
+	padding-top: 8px;
+	padding-bottom: 7px
+}
+
+.few-seedlist-container.svelte-rr924h .item-content.svelte-rr924h.svelte-rr924h {
+	display: block;
+	min-height: auto
+}
+
+.collapse-toggle-row.svelte-rr924h.svelte-rr924h.svelte-rr924h:hover {
+	text-decoration: underline
+}
+
+.collapse-toggle-row.svelte-rr924h img.svelte-rr924h.svelte-rr924h {
+	vertical-align: middle;
+	transform: rotate(90deg);
+	transition: transform .35s;
+	margin-bottom: 4px
+}
+
+.collapse-toggle-row.svelte-rr924h img.collapsed.svelte-rr924h.svelte-rr924h {
+	transform: rotate(0)
+}
+
+.last-bought-button.svelte-rr924h.svelte-rr924h.svelte-rr924h {
+	display: inline-flex;
+	gap: 2px;
+	align-items: center;
+	padding: 0 3px
+}
+
+.seed-list.svelte-rr924h.svelte-rr924h.svelte-rr924h {
 	display: flex;
 	gap: 4px;
 	flex-wrap: wrap;
@@ -10,17 +48,50 @@
 	padding: 8px 5px 7px
 }
 
-.seed-list.svelte-sejlla button.svelte-sejlla {
-	display: flex;
-	flex-direction: column;
-	align-items: center
+.seed-list.svelte-rr924h button.svelte-rr924h.svelte-rr924h {
+	all: unset;
+	position: relative;
+	border: 1px solid currentColor;
+	line-height: 0;
+	padding: 3px 8px;
+	border-radius: 8px;
+	transform: scale(1);
+	transition: transform .35s
 }
 
-.last-bought-button.svelte-sejlla.svelte-sejlla {
-	display: inline-flex;
-	gap: 2px;
+.seed-list.svelte-rr924h button.svelte-rr924h.svelte-rr924h:hover {
+	transform: scale(1.1)
+}
+
+.seed-list.svelte-rr924h button.svelte-rr924h img.svelte-rr924h {
+	transform: rotate(0);
+	transition: transform .35s
+}
+
+.seed-list.svelte-rr924h button.svelte-rr924h:hover img.svelte-rr924h {
+	transform: rotate(8deg)
+}
+
+.seed-list.svelte-rr924h button[disabled].svelte-rr924h.svelte-rr924h {
+	transform: scale(1);
+	filter: grayscale(1)
+}
+
+.seed-list.svelte-rr924h button[disabled].svelte-rr924h img.svelte-rr924h {
+	transform: rotate(0);
+	opacity: .5
+}
+
+.seed-level.svelte-rr924h.svelte-rr924h.svelte-rr924h {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
 	align-items: center;
-	padding: 0 3px
+	font-size: 14px
 }
 
 .quick-swap-area.svelte-ziplh9 {
@@ -33,6 +104,87 @@
 	cursor: pointer
 }
 
+.action-tray.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	float: right
+}
+
+.hlist.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	font-size: 12px
+}
+
+.hlist.svelte-1oplpo8 a.svelte-1oplpo8.svelte-1oplpo8 {
+	cursor: pointer
+}
+
+.hlist.svelte-1oplpo8 a.svelte-1oplpo8+a.svelte-1oplpo8:before {
+	content: " | ";
+	color: #999;
+	cursor: none
+}
+
+.start-edit-button.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	opacity: .5
+}
+
+.start-edit-button.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8:hover {
+	opacity: 1
+}
+
+.edit-section.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	margin-left: -22px;
+	margin-right: -10px
+}
+
+.edit-section-title.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	margin: 3px 0;
+	border: 1px solid #999;
+	padding: 1px 2px
+}
+
+.edit-section-title.svelte-1oplpo8 input.svelte-1oplpo8.svelte-1oplpo8 {
+	min-width: 0
+}
+
+ul.edit-link-list.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	padding-left: 0
+}
+
+ul.edit-link-list.svelte-1oplpo8 li.svelte-1oplpo8.svelte-1oplpo8 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr auto auto auto
+}
+
+ul.edit-link-list.svelte-1oplpo8 input.svelte-1oplpo8.svelte-1oplpo8 {
+	min-width: 30px;
+	font-size: 12px
+}
+
+.icon-btn.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	width: 14px;
+	text-align: center;
+	cursor: pointer
+}
+
+.icon-btn.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8:hover {
+	opacity: .8
+}
+
+.icon-btn.hide.svelte-1oplpo8.svelte-1oplpo8.svelte-1oplpo8 {
+	visibility: hidden;
+	pointer-events: none;
+	cursor: default
+}
+
 button.svelte-1bj479l {
 	white-space: nowrap
+}
+
+:root {
+	--fewfh-border-color: #c8c7cc
+}
+
+:root .layout-dark {
+	--fewfh-border-color: #393939
 }
