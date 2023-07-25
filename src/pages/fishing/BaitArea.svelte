@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Fishing } from ".";
 	import { FarmRPG } from "../../farmrpg";
-	import { buyItem, waitForElm } from "../../utils";
+	import { waitForElm } from "../../utils";
 
 	$: buyingWorms = false;
 	$: wormErrorText = null;
@@ -10,7 +10,7 @@
 	async function onBuyWorms() {
 		try {
 			buyingWorms = true;
-			const response = await buyItem(18, 200);
+			const response = await FarmRPG.buyItem(18, 200);
 			buyingWorms = false;
 			if (response == "success" || response === "") {
 				FarmRPG.refreshPage();

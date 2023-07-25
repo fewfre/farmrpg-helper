@@ -2,11 +2,10 @@
 	import { PlayerFarm } from ".";
 	import { Asset } from "../../assets";
 	import { FarmRPG } from "../../farmrpg";
-	import { buyItem, getSkillLevels } from "../../utils";
 
 	const LSKEY_LAST_BOUGHT = "few-farm-lastbought";
 	const LSKEY_COLLAPSED = "few-farm-seeds-collapsed";
-	const farmingLevel = getSkillLevels().farming;
+	const farmingLevel = FarmRPG.getSkillLevels().farming;
 
 	export let seeds: PlayerFarm.SeedProps[];
 
@@ -42,7 +41,7 @@
 		}
 		try {
 			const res = await (buyCount > 0
-				? buyItem(id, buyCount)
+				? FarmRPG.buyItem(id, buyCount)
 				: PlayerFarm.setCurrentSeed(id).then(() => "success"));
 			if (res === "success") {
 				await fetch(`worker.php?go=plantall&id=${PlayerFarm.getFarmID()}`, { method: "POST" });

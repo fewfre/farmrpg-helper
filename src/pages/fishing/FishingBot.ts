@@ -1,5 +1,6 @@
 import { Asset } from "../../assets";
-import { buyItem, randomNumber, sleep, waitForElm } from "../../utils";
+import { FarmRPG } from "../../farmrpg";
+import { randomNumber, sleep, waitForElm } from "../../utils";
 
 export class FishingBot extends EventTarget {
 	static FINISHED = "FINISHED";
@@ -32,7 +33,7 @@ export class FishingBot extends EventTarget {
 				// Random number here probably doesn't help, but meh
 				if (this.autoBuyWorms && this.getBaitCount() < randomNumber(50, 100)) {
 					// No reason to `await`, just keep fishing.
-					buyItem(18, randomNumber(80, 100));
+					FarmRPG.buyItem(18, randomNumber(80, 100));
 				}
 			}
 			this.active = false;

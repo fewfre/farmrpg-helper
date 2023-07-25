@@ -1,3 +1,6 @@
+## V1.0.7 - 24 July 2023
+- Some code cleanup with `FarmRPG` namespace
+
 ## V1.0.6 - 23 July 2023
 - Small cleanup
 - Quick seeds list now collapsible (request)
